@@ -1,17 +1,21 @@
+using System;
 using System.Linq;
 using Commands;
 using Constants;
 
 namespace Commons {
-    public static class Parser {
+    public class Parser {
+        public Parser () {
 
-        public static ICommand Parse (string command) {
+        }
+
+        public ICommand Parse (string command) {
             if (string.IsNullOrWhiteSpace (command))
-                throw new System.ArgumentException ("message", nameof (command));
+                throw new ArgumentNullException ("message", nameof (command));
             ICommand cmd = null;
 
             if (!command.StartsWith (Constant.InitialCommand))
-                throw new System.ArgumentException ("message", nameof (command));
+                throw new ArgumentException ("message", nameof (command));
 
             var cmdParts = command.Split (' ').ToList ();
             var cmdName = cmdParts[1];

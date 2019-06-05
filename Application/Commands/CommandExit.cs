@@ -7,10 +7,11 @@ namespace Commands {
         public CommandExit () { }
 
         public void Help () {
-
+            Console.WriteLine ("Exit command does not have any help");
         }
 
         public void ParseArguments (List<string> args) {
+
         }
 
         public void Run () {

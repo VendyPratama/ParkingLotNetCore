@@ -1,5 +1,6 @@
 ﻿using System;
 using Commands;
+using Commons;
 using Models;
 
 namespace ParkingLotNetCore {
@@ -13,7 +14,7 @@ namespace ParkingLotNetCore {
             var instance = ParkingLot.Instance (parkingName: inputName);
             Console.WriteLine ("Type \"plot help\" for list commands");
 
-            CommandManager commnadManager = new CommandManager ();
+            CommandManager commnadManager = new CommandManager (new Parser ());
             commnadManager.Run ();
         }
     }
