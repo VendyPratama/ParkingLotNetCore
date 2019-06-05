@@ -26,9 +26,8 @@ namespace Commons {
                     cmd = new CommandExit ();
                     cmd.ParseArguments (arguments);
                     break;
-                case Constant.InfoCommand:
-                    cmd = new CommandInfo ();
-                    cmd.ParseArguments (arguments);
+                case Constant.ParkCommand:
+
                     break;
                 default:
                     return null;

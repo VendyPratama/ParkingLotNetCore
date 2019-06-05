@@ -5,14 +5,15 @@ namespace Commands {
         public CommandHelp () { }
 
         public string Help () {
-            throw new System.NotImplementedException ();
+            string msg = "";
+            return msg;
         }
 
-        public void ParseArguments (List<string> args) {
-        }
+        public void ParseArguments (List<string> args) { }
 
         public string Run () {
-            throw new System.NotImplementedException ();
+            string msg = string.Empty;
+            return msg;
         }
     }
 }

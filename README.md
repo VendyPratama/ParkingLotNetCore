@@ -13,7 +13,6 @@ All command started with
 
 ##List commands 
 ```
-info
 help
 exit
 ```

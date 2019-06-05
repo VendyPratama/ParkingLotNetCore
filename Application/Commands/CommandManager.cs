@@ -17,14 +17,14 @@ namespace Commands {
             try {
                 var cmd = _parser.Parse (command);
                 if (cmd == null) {
-                    Console.WriteLine (string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ()));
-                    outputString = string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ());
+                    Console.WriteLine (string.Format (Constant.UndefinedCommandMessage, command.Replace (' ', '-')));
+                    outputString = string.Format (Constant.UndefinedCommandMessage, command.Replace (' ', '-'));
                 } else {
                     outputString = cmd.Run ();
                 }
             } catch (Exception) {
-                Console.WriteLine (string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ()));
-                outputString = string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ());
+                Console.WriteLine (string.Format (Constant.UndefinedCommandMessage, command.Replace (' ', '-')));
+                outputString = string.Format (Constant.UndefinedCommandMessage, command.Replace (' ', '-'));
             }
 
             return outputString;
