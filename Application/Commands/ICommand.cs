@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace Commands {
     public interface ICommand {
-        void Run ();
-        void Help ();
+        string Run ();
+        string Help ();
         void ParseArguments (List<string> args);
     }
 }

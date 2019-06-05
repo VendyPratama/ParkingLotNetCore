@@ -1,30 +1,33 @@
 using System;
+using System.Linq;
 using Commons;
 using Constants;
 using Models;
 
 namespace Commands {
     public class CommandManager {
-        public CommandManager () { }
+        private readonly Parser _parser;
 
-        public void Help () {
-            throw new System.NotImplementedException ();
+        public CommandManager (Parser parser) {
+            _parser = parser;
         }
 
-        public void Run () {
-            while (true) {
-                string command = Console.ReadLine ();
-                try {
-                    var cmd = Parser.Parse (command);
-                    if (cmd == null)
-                        Console.WriteLine (Constant.UndefinedCommandMessage);
-                    else {
-                        cmd.Run ();
-                    }
-                } catch (Exception) {
-                    Console.WriteLine (Constant.UndefinedCommandMessage);
+        public string Execute (string command) {
+            string outputString = string.Empty;
+            try {
+                var cmd = _parser.Parse (command);
+                if (cmd == null) {
+                    Console.WriteLine (string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ()));
+                    outputString = string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ());
+                } else {
+                    outputString = cmd.Run ();
                 }
+            } catch (Exception) {
+                Console.WriteLine (string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ()));
+                outputString = string.Format (Constant.UndefinedCommandMessage, command.Split (' ').ToList ().FirstOrDefault ());
             }
+
+            return outputString;
         }
     }
 }
