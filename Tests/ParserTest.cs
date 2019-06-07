@@ -17,19 +17,21 @@ namespace Tests {
         }
 
         [Fact]
-        public void Parser_ShouldThrowsWhenStartWithNotEqualToInitialCommand () {
-            Assert.Throws<ArgumentException> (() => _parser.Parse ("plat exit"));
-        }
-
-        [Fact]
         public void Parser_ShouldReturnCommandExit () {
-            var cmd = _parser.Parse ("plot exit");
+            var cmd = _parser.Parse ("exit");
             Assert.True (cmd is CommandExit);
         }
 
-        //[Fact]
-        public void Parser_ShouldReturnCommandInfo () {
-            var cmd = _parser.Parse ("plot info");
+        [Fact]
+        public void Parser_ShouldReturnCommandPark () {
+            var cmd = _parser.Parse ("park");
+            Assert.True (cmd is CommandPark);
+        }
+
+        [Fact]
+        public void Parser_ShouldReturnCommandHelp () {
+            var cmd = _parser.Parse ("help");
+            Assert.True (cmd is CommandHelp);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace ParkingLotNetCore {
             Console.Write ("Input max slot : ");
             int maxSlot = int.Parse (Console.ReadLine ());
             var instance = ParkingLot.Instance (parkingName: inputName);
-            Console.WriteLine ("Type \"plot help\" for list commands");
+            Console.WriteLine ("Type \"help\" for list commands");
 
             Runner.Run ();
         }

@@ -14,12 +14,9 @@ namespace Commons {
                 throw new ArgumentNullException ("message", nameof (command));
             ICommand cmd = null;
 
-            if (!command.StartsWith (Constant.InitialCommand))
-                throw new ArgumentException ("message", nameof (command));
-
             var cmdParts = command.Split (' ').ToList ();
-            var cmdName = cmdParts[1];
-            var arguments = cmdParts.Skip (2).ToList ();
+            var cmdName = cmdParts[0];
+            var arguments = cmdParts.Skip (1).ToList ();
 
             switch (cmdName) {
                 case Constant.ExitCommand:
@@ -27,7 +24,11 @@ namespace Commons {
                     cmd.ParseArguments (arguments);
                     break;
                 case Constant.ParkCommand:
-
+                    cmd = new CommandPark ();
+                    cmd.ParseArguments (arguments);
+                    break;
+                case Constant.HelpCommand:
+                    cmd = new CommandHelp ();
                     break;
                 default:
                     return null;

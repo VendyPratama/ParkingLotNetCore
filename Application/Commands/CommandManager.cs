@@ -22,12 +22,23 @@ namespace Commands {
                 } else {
                     outputString = cmd.Run ();
                 }
+            } catch (InvalidArgumentException ex) {
+                Console.WriteLine (ex.Message);
+                outputString = ex.Message;
+            } catch (InvalidCommandException) {
+                Console.WriteLine (UndefinedMessageWrapper (command));
+                outputString = UndefinedMessageWrapper (command);
             } catch (Exception) {
-                Console.WriteLine (string.Format (Constant.UndefinedCommandMessage, command.Replace (' ', '-')));
-                outputString = string.Format (Constant.UndefinedCommandMessage, command.Replace (' ', '-'));
+                Console.WriteLine (Constant.UnexpectedErrorMessage);
+                outputString = Constant.UnexpectedErrorMessage;
             }
 
             return outputString;
+        }
+
+        public string UndefinedMessageWrapper (string command) {
+            var s = string.Format (Constant.UndefinedCommandMessage, command.Replace (' ', '-'));
+            return s;
         }
     }
 }
